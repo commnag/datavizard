@@ -19,41 +19,56 @@
     var root = document.documentElement;
     root.classList.add('js', 'gate-open');
     try { localStorage.removeItem('theme'); } catch (e) {}  // clear any choice saved by an earlier version
+
+    // Fetch how many visits chose each theme now, so the number is already here when a theme is picked.
+    // Kept in memory only. If the counter is off, blocked or slow, the gate just skips the card turn.
+    window.__gc = {};
+    [['light', 'gate-daylight'], ['dark', 'gate-night']].forEach(function (v) {
+      try {
+        fetch('https://abhisheknag.goatcounter.com/counter/' + v[1] + '.json')
+          .then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (j) { var n = j ? parseInt(String(j.count).replace(/\D/g, ''), 10) : NaN; if (n >= 0) window.__gc[v[0]] = n; })
+          .catch(function () {});
+      } catch (e) {}
+    });
   })();
 </script>
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<!-- Theme gate: an A/B test with the visitor as the experiment -->
+<!-- Theme gate: a small A/B test panel over the live page -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t">
-  <p class="gate-head" id="gate-t">Run an A/B test on me: pick a variant</p>
-
-  <button class="half half-a" type="button" data-pick="light">
-    <span class="half-in">
-      <span class="v">Variant A</span>
-      <span class="vname">Daylight</span>
-      <svg viewBox="0 0 200 80" aria-hidden="true">
-        <polyline class="g-ctrl" points="6,52 44,50 82,53 100,48 138,40 194,32"/>
-        <polyline class="g-treat" points="6,70 44,68 82,71 100,66 138,44 194,12"/>
-      </svg>
-      <span class="note">Pastel paper, easy in a bright room.</span>
-      <span class="sys" hidden>Matches your system</span>
-    </span>
-  </button>
-
-  <button class="half half-b" type="button" data-pick="dark">
-    <span class="half-in">
-      <span class="v">Variant B</span>
-      <span class="vname">Night</span>
-      <svg viewBox="0 0 200 80" aria-hidden="true">
-        <polyline class="g-ctrl" points="6,52 44,50 82,53 100,48 138,40 194,32"/>
-        <polyline class="g-treat" points="6,70 44,68 82,71 100,66 138,44 194,12"/>
-      </svg>
-      <span class="note">Soft and low-glare, easy in the dark.</span>
-      <span class="sys" hidden>Matches your system</span>
-    </span>
-  </button>
+  <div class="gate-card" id="gate-card">
+    <div class="gate-flip">
+      <div class="face face-front">
+        <p class="gate-t" id="gate-t">Which theme do you prefer?</p>
+        <div class="variants">
+          <button class="variant variant-a" type="button" data-pick="light">
+            <span class="v">Variant A</span>
+            <span class="vname">Daylight</span>
+            <svg viewBox="0 0 200 80" aria-hidden="true">
+              <polyline class="g-ctrl" points="6,52 44,50 82,53 100,48 138,40 194,32"/>
+              <polyline class="g-treat" points="6,70 44,68 82,71 100,66 138,44 194,12"/>
+            </svg>
+          </button>
+          <button class="variant variant-b" type="button" data-pick="dark">
+            <span class="v">Variant B</span>
+            <span class="vname">Night</span>
+            <svg viewBox="0 0 200 80" aria-hidden="true">
+              <polyline class="g-ctrl" points="6,52 44,50 82,53 100,48 138,40 194,32"/>
+              <polyline class="g-treat" points="6,70 44,68 82,71 100,66 138,44 194,12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="face face-back" aria-live="polite">
+        <p class="res-k" id="res-k"></p>
+        <p class="res-n" id="res-n"></p>
+        <p class="res-l" id="res-l"></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <canvas class="trail" id="trail" aria-hidden="true"></canvas>
@@ -491,25 +506,71 @@
     if (!root.classList.contains('gate-open')) { gate.remove(); return; }
 
     var sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    var tag = gate.querySelector('[data-pick="' + sys + '"] .sys'); if (tag) tag.hidden = false;
     var behind = [].slice.call(document.querySelectorAll('header, main'));
     behind.forEach(function (el) { el.setAttribute('inert', ''); });
     var first = gate.querySelector('[data-pick="' + sys + '"]'); if (first) first.focus({ preventScroll: true });
 
-    function pick(t, skipped) {
-      window.track(skipped ? 'gate-skipped' : 'gate-' + (t === 'dark' ? 'night' : 'daylight'));
-      root.setAttribute('data-theme', t);
-      gate.classList.add('out-' + t);
-      setTimeout(function () { gate.classList.add('done'); }, 640);
+    var picked = false, left = false, hold;
+    var card = document.getElementById('gate-card');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var NAMES = { light: 'Variant A · Daylight', dark: 'Variant B · Night' };
+
+    // Preview the hovered or focused variant on the page behind the panel; fall back to the system theme.
+    function settle() {
+      if (picked) return;
+      var f = document.activeElement, t = f && f.getAttribute && f.getAttribute('data-pick');
+      if (t) root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
+    }
+    [].forEach.call(gate.querySelectorAll('[data-pick]'), function (b) {
+      var t = b.getAttribute('data-pick');
+      b.addEventListener('pointerenter', function (e) { if (!picked && e.pointerType === 'mouse') root.setAttribute('data-theme', t); });
+      b.addEventListener('pointerleave', function () { setTimeout(settle, 0); });
+      b.addEventListener('focus', function () { if (!picked) root.setAttribute('data-theme', t); });
+      b.addEventListener('blur', function () { setTimeout(settle, 0); });
+    });
+
+    // Lift the blur and let the card float away, so the portfolio comes into focus.
+    function leave() {
+      if (left) return; left = true; clearTimeout(hold);
+      gate.classList.add('leave');
       setTimeout(function () {
         root.classList.remove('gate-open');
         behind.forEach(function (el) { el.removeAttribute('inert'); });
         gate.remove();
         window.scrollTo(0, 0);
-      }, 1100);
+      }, 700);
     }
-    gate.addEventListener('click', function (e) { var b = e.target.closest('[data-pick]'); if (b) pick(b.getAttribute('data-pick')); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('gate-open')) pick(sys, true); });
+
+    // Turn the card over and show how many visits chose this theme (including this one).
+    function showCount(t, n) {
+      var big = document.getElementById('res-n');
+      document.getElementById('res-k').textContent = NAMES[t];
+      document.getElementById('res-l').textContent = n === 1 ? 'visit has chosen this theme so far: yours.' : 'visits have chosen this theme, including yours.';
+      big.textContent = reduceMotion || n < 8 ? n.toLocaleString() : '0';
+      card.classList.add('flipped');
+      if (!reduceMotion && n >= 8) {
+        var t0 = null;
+        (function step(ts) {
+          if (t0 === null) t0 = ts + 350;                        // start counting as the card passes edge-on
+          var p = Math.min(1, Math.max(0, (ts - t0) / 700));
+          big.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))).toLocaleString();
+          if (p < 1) requestAnimationFrame(step);
+        })(performance.now());
+      }
+      hold = setTimeout(leave, 1800);
+      setTimeout(function () { gate.addEventListener('click', leave); }, 900);   // click to skip the wait
+    }
+
+    function pick(t, skipped) {
+      if (picked) return;
+      picked = true;
+      window.track(skipped ? 'gate-skipped' : 'gate-' + (t === 'dark' ? 'night' : 'daylight'));
+      root.setAttribute('data-theme', t);
+      var n = window.__gc && window.__gc[t];
+      if (!skipped && typeof n === 'number') showCount(t, n + 1); else leave();
+    }
+    gate.addEventListener('click', function (e) { var b = e.target.closest('[data-pick]'); if (b && !picked) pick(b.getAttribute('data-pick')); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('gate-open')) { if (picked) leave(); else pick(sys, true); } });
   })();
 </script>
 <script src="assets/js/main.js" defer></script>
