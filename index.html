@@ -25,7 +25,7 @@
     window.__gc = {};
     [['light', 'gate-daylight'], ['dark', 'gate-night']].forEach(function (v) {
       try {
-        fetch('https://abhisheknag.goatcounter.com/counter/' + v[1] + '.json')
+        fetch('https://abhisheknag.goatcounter.com/counter/' + v[1] + '.json?t=' + Date.now())
           .then(function (res) { return res.ok || res.status === 404 ? res.json() : null; })  // 404 = never picked yet, body says 0
           .then(function (j) { var n = j ? parseInt(String(j.count).replace(/\D/g, ''), 10) : NaN; if (n >= 0) window.__gc[v[0]] = n; })
           .catch(function () {});
@@ -573,13 +573,23 @@
       setTimeout(function () { gate.addEventListener('click', leave); }, 900);   // click to skip the wait
     }
 
+    // GoatCounter's counter lags (about 20s to process, plus a cache in front of it) and counts a repeat
+    // pick from the same browser only once. So this browser also remembers the last number it was shown
+    // per theme, and the next number is whichever is higher: that plus one, or GoatCounter's count plus one.
+    // Repeat picks therefore always move the number straight away, and other visitors' picks still show up.
+    // It stores two small numbers only. It never records the theme to use, and the gate still opens every time.
+    var TALLY = 'gate-counts';
+    function readTally() { try { var o = JSON.parse(localStorage.getItem(TALLY) || '{}'); return o && typeof o === 'object' ? o : {}; } catch (e) { return {}; } }
+    function saveTally(t, n) { try { var o = readTally(); o[t] = n; localStorage.setItem(TALLY, JSON.stringify(o)); } catch (e) {} }
+
     function pick(t, skipped) {
       if (picked) return;
       picked = true;
       window.track(skipped ? 'gate-skipped' : 'gate-' + (t === 'dark' ? 'night' : 'daylight'));
       root.setAttribute('data-theme', t);
-      var n = window.__gc && window.__gc[t];
-      if (!skipped && typeof n === 'number') showCount(t, n + 1); else leave();
+      var remote = window.__gc && window.__gc[t], mine = readTally()[t];
+      var n = Math.max(typeof remote === 'number' ? remote + 1 : 0, typeof mine === 'number' ? mine + 1 : 0);
+      if (!skipped && n > 0) { saveTally(t, n); showCount(t, n); } else leave();
     }
     gate.addEventListener('click', function (e) { var b = e.target.closest('[data-pick]'); if (b && !picked) pick(b.getAttribute('data-pick')); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('gate-open')) { if (picked) leave(); else pick(sys, true); } });
