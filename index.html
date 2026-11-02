@@ -26,7 +26,7 @@
     [['light', 'gate-daylight'], ['dark', 'gate-night']].forEach(function (v) {
       try {
         fetch('https://abhisheknag.goatcounter.com/counter/' + v[1] + '.json')
-          .then(function (res) { return res.ok ? res.json() : null; })
+          .then(function (res) { return res.ok || res.status === 404 ? res.json() : null; })  // 404 = never picked yet, body says 0
           .then(function (j) { var n = j ? parseInt(String(j.count).replace(/\D/g, ''), 10) : NaN; if (n >= 0) window.__gc[v[0]] = n; })
           .catch(function () {});
       } catch (e) {}
