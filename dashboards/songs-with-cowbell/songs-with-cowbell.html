@@ -1,0 +1,118 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Songs with Cowbell</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#000;height:100vh;overflow:hidden;font:14px Inter,sans-serif;color:#fff}
+.d{position:relative;width:100%;height:100vh;background:#121212;overflow:hidden;display:grid;grid-template-columns:210px 1fr;grid-template-rows:1fr 76px}
+.side{background:#000;padding:20px 16px;display:flex;flex-direction:column;gap:8px}
+.logo{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.logo img{width:38px;height:38px;object-fit:contain;filter:invert(1)}
+.logo span{font:400 17px/1.05 'Libre Caslon Text',serif}
+.side a{display:flex;gap:12px;align-items:center;color:#b3b3b3;font-weight:600;padding:6px 4px}
+.side a.on{color:#fff}.side svg{width:22px;height:22px;fill:currentColor}
+.lib{margin-top:18px;padding-top:14px;border-top:1px solid #282828;color:#b3b3b3;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.pl{display:grid;gap:10px;margin-top:10px}.pl div{display:flex;gap:10px;align-items:center;color:#b3b3b3;font-size:13px}.pl i{width:36px;height:36px;border-radius:4px;display:block}
+.main{overflow:hidden;display:flex;flex-direction:column;min-height:0;background:linear-gradient(#1f5f3a 0,#121212 330px)}
+.hero{display:flex;align-items:flex-end;gap:22px;padding:34px 28px 22px}
+.cover{width:170px;height:170px;border-radius:6px;background:#fde68a;display:grid;place-items:center;box-shadow:0 8px 40px #0008;overflow:hidden;flex:none}
+.cover img{width:150%;max-width:none}
+.hero small{font:700 12px Inter;text-transform:uppercase}
+.hero h1{font:400 64px/.95 'Libre Caslon Text',serif;margin:6px 0 12px}.hero h1 em{font-size:44px;font-style:normal;color:#1ed760}
+.meta{color:#d0d0d0;font-size:13px}.meta b{color:#fff}
+.tools{display:flex;align-items:center;gap:20px;padding:6px 28px 14px}
+.play{width:52px;height:52px;border-radius:50%;background:#1ed760;display:grid;place-items:center}.play svg{width:24px;fill:#000}
+.chip{border:1px solid #fff4;border-radius:20px;padding:5px 12px;color:#b3b3b3;font-size:12px;font-weight:600}
+table{width:100%;border-collapse:collapse;margin:0 0 0;}
+.tbl{padding:0 20px;flex:1;min-height:0;display:flex;flex-direction:column}
+#top{overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:#535353 transparent}
+.search{background:#ffffff1a;border:0;border-radius:20px;padding:7px 14px;color:#fff;font:13px Inter;width:200px;outline:none}.search::placeholder{color:#b3b3b3}.search:focus{box-shadow:0 0 0 2px #1ed760}
+.empty{padding:20px;color:#b3b3b3;text-align:center}
+.head,.tr{display:grid;grid-template-columns:36px 1fr 200px 60px;align-items:center;padding:0 10px;gap:10px}
+.head{height:30px;color:#b3b3b3;font-size:12px;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid #282828;margin-bottom:6px}
+.tr{height:38px;border-radius:4px}.tr:hover{background:#ffffff1a}
+.tr .rk{color:#b3b3b3;text-align:center}.tr.pl1 .rk{color:#1ed760}.tr.pl1 .nm{color:#1ed760}
+.tr .nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tr .bar{height:4px;background:#4d4d4d;border-radius:2px}.tr .bar i{display:block;height:100%;background:#fff;border-radius:2px}.tr:hover .bar i,.tr.pl1 .bar i{background:#1ed760}
+.tr b{text-align:right;color:#b3b3b3;font-weight:400}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:14px}.eq i{width:3px;background:#1ed760;animation:eq 1s infinite ease-in-out}.eq i:nth-child(2){animation-delay:.25s}.eq i:nth-child(3){animation-delay:.5s}
+@keyframes eq{0%,100%{height:3px}50%{height:14px}}
+.player{grid-column:1/3;background:#181818;border-top:1px solid #282828;display:grid;grid-template-columns:1fr 1.4fr 1fr;align-items:center;padding:0 18px}
+.np{display:flex;gap:12px;align-items:center}.np .art{width:48px;height:48px;border-radius:4px;background:#fde68a;display:grid;place-items:center;overflow:hidden}.np .art img{width:150%;max-width:none}
+.np b{display:block}.np span{color:#b3b3b3;font-size:12px}
+.ctl{display:grid;gap:8px;justify-items:center}.btns{display:flex;gap:18px;align-items:center}.btns svg{width:18px;fill:#b3b3b3}.btns .pp{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center}.btns .pp svg{fill:#000;width:14px}
+.prog{display:flex;gap:8px;align-items:center;width:100%;color:#b3b3b3;font-size:11px}.prog div{flex:1;height:4px;background:#4d4d4d;border-radius:2px}.prog i{display:block;height:100%;width:100%;background:#fff;border-radius:2px}
+.vol{justify-self:end;display:flex;gap:8px;align-items:center;width:120px}.vol svg{width:18px;fill:#b3b3b3}.vol div{flex:1;height:4px;background:#4d4d4d;border-radius:2px}.vol i{display:block;height:100%;width:70%;background:#fff;border-radius:2px}
+.tr .nm{cursor:pointer}.tr .nm:hover{text-decoration:underline}
+.pop{position:absolute;z-index:10;width:280px;max-height:300px;overflow-y:auto;background:#282828;border:1px solid #ffffff22;border-radius:8px;padding:14px 16px;box-shadow:0 12px 32px #000a;scrollbar-width:thin;scrollbar-color:#535353 transparent}
+.pop h3{font:700 15px Inter;margin-bottom:2px}.pop .pct{color:#1ed760;font-size:12px;font-weight:600;margin-bottom:10px}
+.pop ul{list-style:none;padding:0;display:grid;gap:6px;border-top:1px solid #ffffff1a;padding-top:10px}.pop li{font-size:13px;color:#e0e0e0}
+.pop .x{position:absolute;top:8px;right:10px;background:none;border:0;color:#b3b3b3;font-size:18px;cursor:pointer;line-height:1}
+</style></head><body>
+<div class="d">
+<nav class="side">
+ <div class="logo"><img src="assets/cowbell.png" alt=""><span>Songs with Cowbell</span></div>
+ <a class="on"><svg viewBox="0 0 24 24"><path d="M12 3 3 10v11h6v-7h6v7h6V10z"/></svg>Home</a>
+ <a><svg viewBox="0 0 24 24"><path d="M10 3a7 7 0 1 0 4.4 12.4l5.3 5.3 1.4-1.4-5.3-5.3A7 7 0 0 0 10 3zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>Search</a>
+ <a><svg viewBox="0 0 24 24"><path d="M4 4h3v16H4zm5 0h3v16H9zm5.5.5 2.9-.8 4 15.5-2.9.8z"/></svg>Your Library</a>
+ <div class="lib">Playlists</div>
+ <div class="pl"><div><i style="background:#1ed760"></i>Top Artists</div><div><i style="background:#ec4899"></i>One-Hit Cowbell</div><div><i style="background:#3b82f6"></i>Deep Cuts</div></div>
+</nav>
+<section class="main">
+ <div class="hero">
+  <div class="cover"><img src="assets/cowbell.png" alt=""></div>
+  <div><small>Playlist</small><h1>SONGS WITH<br><em>COWBELL</em></h1>
+  <div class="meta"><b id="s-artists"></b> artists • <b id="s-songs"></b> songs • <b id="s-one"></b> only appear once</div></div>
+ </div>
+ <div class="tools"><div class="play"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></div><span class="chip">All artists · most songs first</span><input class="search" id="q" placeholder="Search artists" autocomplete="off"></div>
+ <div class="tbl"><div class="head"><span style="text-align:center">#</span><span>Artist</span><span>Songs</span><span style="text-align:right">Count</span></div><div id="top"></div></div>
+</section>
+<footer class="player">
+ <div class="np"><div class="art"><img src="assets/cowbell.png" alt=""></div><div><b id="np-n"></b><span id="np-s"></span></div></div>
+ <div class="ctl"><div class="btns"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zm3 7 10-7v14z"/></svg><div class="pp"><svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg></div><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM5 5l10 7L5 19z"/></svg></div><div class="prog"><span>0:00</span><div><i style="width:34%"></i></div><span>3:42</span></div></div>
+ <div class="vol"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg><div><i></i></div></div>
+</footer>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const esc = t => t.replace(/[&<>"']/g, c => '&#' + c.charCodeAt(0) + ';');
+Promise.all([fetch('data.json').then(r => r.json()), fetch('songs.json').then(r => r.json())]).then(([D, SONGS]) => {
+  const all = [...D.all].sort((a, b) => b.songs - a.songs || a.artist.localeCompare(b.artist));
+  const max = all[0].songs;
+  const once = all.filter(r => r.songs === 1).length;
+  $('#s-artists').textContent = D.artists;
+  $('#s-songs').textContent = D.songs;
+  $('#s-one').textContent = Math.round(once / D.artists * 100) + '%';
+  $('#np-n').textContent = all[0].artist;
+  $('#np-s').textContent = all[0].songs + ' songs with cowbell';
+  const draw = (q = '') => {
+    const rows = all.map((r, i) => ({ ...r, rank: i + 1 })).filter(r => r.artist.toLowerCase().includes(q));
+    $('#top').innerHTML = rows.length ? rows.map(r => `<div class="tr${r.rank == 1 ? ' pl1' : ''}"><span class="rk">${r.rank == 1 ? '<span class="eq"><i></i><i></i><i></i></span>' : r.rank}</span><span class="nm" data-a="${esc(r.artist)}" title="${esc(r.artist)}">${esc(r.artist)}</span><span class="bar"><i style="width:${r.songs / max * 100}%"></i></span><b>${r.songs}</b></div>`).join('') : '<div class="empty">No artists match</div>';
+  };
+  draw();
+  const closePop = () => document.querySelector('.pop')?.remove();
+  $('#top').addEventListener('click', e => {
+    const nm = e.target.closest('.nm');
+    if (!nm) return;
+    e.stopPropagation();
+    const same = document.querySelector('.pop')?.dataset.a === nm.dataset.a;
+    closePop();
+    if (same) return;
+    const a = nm.dataset.a, n = all.find(r => r.artist === a).songs;
+    const pct = (all.filter(r => r.songs < n).length / all.length * 100).toFixed(1).replace(/\.0$/, '');
+    const pop = document.createElement('div');
+    pop.className = 'pop';
+    pop.dataset.a = a;
+    pop.innerHTML = `<button class="x" aria-label="Close">&times;</button><h3>${esc(a)}</h3><div class="pct">Ahead of ${pct}% of artists</div><ul>${(SONGS[a] || []).map(t => `<li>${esc(t)}</li>`).join('')}</ul>`;
+    const d = $('.d'), dr = d.getBoundingClientRect(), nr = nm.getBoundingClientRect();
+    d.appendChild(pop);
+    pop.style.left = Math.min(nr.left - dr.left + 20, dr.width - 300) + 'px';
+    const below = nr.bottom - dr.top + 6;
+    pop.style.top = (below + pop.offsetHeight > dr.height - 76 ? Math.max(8, nr.top - dr.top - pop.offsetHeight - 6) : below) + 'px';
+    pop.querySelector('.x').onclick = closePop;
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('.pop')) closePop(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePop(); });
+  $('#top').addEventListener('scroll', closePop);
+  $('#q').addEventListener('input', e => { closePop(); draw(e.target.value.trim().toLowerCase()); });
+}).catch(() => { $('#top').innerHTML = '<div class="empty">Could not load data.json. Open this page through a local server (see below).</div>'; });
+</script></body></html>

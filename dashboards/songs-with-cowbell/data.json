@@ -1,0 +1,1790 @@
+{
+ "artists": 446,
+ "songs": 661,
+ "all": [
+  {
+   "artist": "Kiss",
+   "songs": 9
+  },
+  {
+   "artist": "Beatles",
+   "songs": 8
+  },
+  {
+   "artist": "Rush",
+   "songs": 7
+  },
+  {
+   "artist": "The Allman Brothers Band",
+   "songs": 7
+  },
+  {
+   "artist": "Guns n Roses",
+   "songs": 6
+  },
+  {
+   "artist": "Led Zeppelin",
+   "songs": 6
+  },
+  {
+   "artist": "Queen",
+   "songs": 6
+  },
+  {
+   "artist": "Van Halen",
+   "songs": 6
+  },
+  {
+   "artist": "Donnas",
+   "songs": 5
+  },
+  {
+   "artist": "Jimi Hendrix",
+   "songs": 5
+  },
+  {
+   "artist": "Prince",
+   "songs": 5
+  },
+  {
+   "artist": "Black Crowes",
+   "songs": 4
+  },
+  {
+   "artist": "Bob Seger",
+   "songs": 4
+  },
+  {
+   "artist": "Britney Spears",
+   "songs": 4
+  },
+  {
+   "artist": "Creedence Clearwater Revival",
+   "songs": 4
+  },
+  {
+   "artist": "Def Leppard",
+   "songs": 4
+  },
+  {
+   "artist": "Duran Duran",
+   "songs": 4
+  },
+  {
+   "artist": "Elton John",
+   "songs": 4
+  },
+  {
+   "artist": "Fleetwood Mac",
+   "songs": 4
+  },
+  {
+   "artist": "Fu Manchu",
+   "songs": 4
+  },
+  {
+   "artist": "Jethro Tull",
+   "songs": 4
+  },
+  {
+   "artist": "Jimmy Buffett",
+   "songs": 4
+  },
+  {
+   "artist": "John Cougar Mellencamp",
+   "songs": 4
+  },
+  {
+   "artist": "Motley Crue",
+   "songs": 4
+  },
+  {
+   "artist": "Rolling Stones",
+   "songs": 4
+  },
+  {
+   "artist": "Santana",
+   "songs": 4
+  },
+  {
+   "artist": "Southern Culture on the Skids",
+   "songs": 4
+  },
+  {
+   "artist": "Talking Heads",
+   "songs": 4
+  },
+  {
+   "artist": "ACDC",
+   "songs": 3
+  },
+  {
+   "artist": "Aerosmith",
+   "songs": 3
+  },
+  {
+   "artist": "Alice Cooper",
+   "songs": 3
+  },
+  {
+   "artist": "April Wine",
+   "songs": 3
+  },
+  {
+   "artist": "B-52s",
+   "songs": 3
+  },
+  {
+   "artist": "Bachman Turner Overdrive (BTO)",
+   "songs": 3
+  },
+  {
+   "artist": "Bon Jovi",
+   "songs": 3
+  },
+  {
+   "artist": "Cake",
+   "songs": 3
+  },
+  {
+   "artist": "Chicago",
+   "songs": 3
+  },
+  {
+   "artist": "Dave Matthews Band",
+   "songs": 3
+  },
+  {
+   "artist": "Grateful Dead",
+   "songs": 3
+  },
+  {
+   "artist": "Joe Satriani",
+   "songs": 3
+  },
+  {
+   "artist": "Linda Ronstadt",
+   "songs": 3
+  },
+  {
+   "artist": "Madonna",
+   "songs": 3
+  },
+  {
+   "artist": "Metallica",
+   "songs": 3
+  },
+  {
+   "artist": "Nazareth",
+   "songs": 3
+  },
+  {
+   "artist": "Peter Gabriel",
+   "songs": 3
+  },
+  {
+   "artist": "Poison",
+   "songs": 3
+  },
+  {
+   "artist": "Red Hot Chilli Peppers",
+   "songs": 3
+  },
+  {
+   "artist": "Sly and The Family Stone",
+   "songs": 3
+  },
+  {
+   "artist": "Turtles",
+   "songs": 3
+  },
+  {
+   "artist": "U2",
+   "songs": 3
+  },
+  {
+   "artist": "ABBA",
+   "songs": 2
+  },
+  {
+   "artist": "Asia",
+   "songs": 2
+  },
+  {
+   "artist": "Bad Company",
+   "songs": 2
+  },
+  {
+   "artist": "Beastie Boys",
+   "songs": 2
+  },
+  {
+   "artist": "Big Star",
+   "songs": 2
+  },
+  {
+   "artist": "Black Sabbath",
+   "songs": 2
+  },
+  {
+   "artist": "Bob Dylan",
+   "songs": 2
+  },
+  {
+   "artist": "Bruce Springsteen",
+   "songs": 2
+  },
+  {
+   "artist": "Clutch",
+   "songs": 2
+  },
+  {
+   "artist": "Cranberries",
+   "songs": 2
+  },
+  {
+   "artist": "David Bowie",
+   "songs": 2
+  },
+  {
+   "artist": "David Lee Roth",
+   "songs": 2
+  },
+  {
+   "artist": "Deep Purple",
+   "songs": 2
+  },
+  {
+   "artist": "Dixie Chicks",
+   "songs": 2
+  },
+  {
+   "artist": "Donald Fagen",
+   "songs": 2
+  },
+  {
+   "artist": "Dream Theater",
+   "songs": 2
+  },
+  {
+   "artist": "Earth, Wind, and Fire",
+   "songs": 2
+  },
+  {
+   "artist": "Edgar Winter Group",
+   "songs": 2
+  },
+  {
+   "artist": "Electric Light Orchestra (ELO)",
+   "songs": 2
+  },
+  {
+   "artist": "Elvis Costello",
+   "songs": 2
+  },
+  {
+   "artist": "Elvis Presley",
+   "songs": 2
+  },
+  {
+   "artist": "Foghat",
+   "songs": 2
+  },
+  {
+   "artist": "Frank Sinatra",
+   "songs": 2
+  },
+  {
+   "artist": "Funkadelic",
+   "songs": 2
+  },
+  {
+   "artist": "Genesis",
+   "songs": 2
+  },
+  {
+   "artist": "Hall and Oates",
+   "songs": 2
+  },
+  {
+   "artist": "Harry Nilsson",
+   "songs": 2
+  },
+  {
+   "artist": "Iron Butterfly",
+   "songs": 2
+  },
+  {
+   "artist": "Iron Maiden",
+   "songs": 2
+  },
+  {
+   "artist": "J. Geils Band",
+   "songs": 2
+  },
+  {
+   "artist": "James Brown",
+   "songs": 2
+  },
+  {
+   "artist": "Jerry Reed",
+   "songs": 2
+  },
+  {
+   "artist": "Joe Cocker",
+   "songs": 2
+  },
+  {
+   "artist": "Joe Walsh",
+   "songs": 2
+  },
+  {
+   "artist": "Journey",
+   "songs": 2
+  },
+  {
+   "artist": "Matthew Sweet",
+   "songs": 2
+  },
+  {
+   "artist": "Mountain",
+   "songs": 2
+  },
+  {
+   "artist": "Pantera",
+   "songs": 2
+  },
+  {
+   "artist": "Paul Revere And The Raiders",
+   "songs": 2
+  },
+  {
+   "artist": "Pink Floyd",
+   "songs": 2
+  },
+  {
+   "artist": "Police",
+   "songs": 2
+  },
+  {
+   "artist": "Radiohead",
+   "songs": 2
+  },
+  {
+   "artist": "Rage Against The Machine",
+   "songs": 2
+  },
+  {
+   "artist": "Rapture",
+   "songs": 2
+  },
+  {
+   "artist": "Replacements",
+   "songs": 2
+  },
+  {
+   "artist": "Rick Derringer",
+   "songs": 2
+  },
+  {
+   "artist": "Ricky Nelson",
+   "songs": 2
+  },
+  {
+   "artist": "Runaways",
+   "songs": 2
+  },
+  {
+   "artist": "Screaming Jets",
+   "songs": 2
+  },
+  {
+   "artist": "Selena",
+   "songs": 2
+  },
+  {
+   "artist": "Slade",
+   "songs": 2
+  },
+  {
+   "artist": "Sleater-Kinney",
+   "songs": 2
+  },
+  {
+   "artist": "Spirit",
+   "songs": 2
+  },
+  {
+   "artist": "Sugar Hill Gang",
+   "songs": 2
+  },
+  {
+   "artist": "Survivor",
+   "songs": 2
+  },
+  {
+   "artist": "Ted Nugent",
+   "songs": 2
+  },
+  {
+   "artist": "The Chambers Brothers",
+   "songs": 2
+  },
+  {
+   "artist": "Three Dog Night",
+   "songs": 2
+  },
+  {
+   "artist": "Throw Rag",
+   "songs": 2
+  },
+  {
+   "artist": "Velvet Underground",
+   "songs": 2
+  },
+  {
+   "artist": "Warren Zevon",
+   "songs": 2
+  },
+  {
+   "artist": "-Alt-J",
+   "songs": 1
+  },
+  {
+   "artist": "10cc",
+   "songs": 1
+  },
+  {
+   "artist": "ABC",
+   "songs": 1
+  },
+  {
+   "artist": "Acetone",
+   "songs": 1
+  },
+  {
+   "artist": "Air Supply",
+   "songs": 1
+  },
+  {
+   "artist": "Alabama",
+   "songs": 1
+  },
+  {
+   "artist": "Alan Parsons Project",
+   "songs": 1
+  },
+  {
+   "artist": "Alicia Bridges",
+   "songs": 1
+  },
+  {
+   "artist": "Andrea True Connection",
+   "songs": 1
+  },
+  {
+   "artist": "Andrew Gold",
+   "songs": 1
+  },
+  {
+   "artist": "Aretha Franklin",
+   "songs": 1
+  },
+  {
+   "artist": "Argent",
+   "songs": 1
+  },
+  {
+   "artist": "Artist Presently Known As Ed",
+   "songs": 1
+  },
+  {
+   "artist": "Avril Lavigne",
+   "songs": 1
+  },
+  {
+   "artist": "Babies",
+   "songs": 1
+  },
+  {
+   "artist": "Bad Brains",
+   "songs": 1
+  },
+  {
+   "artist": "Bad Finger",
+   "songs": 1
+  },
+  {
+   "artist": "Bangles",
+   "songs": 1
+  },
+  {
+   "artist": "Barry White",
+   "songs": 1
+  },
+  {
+   "artist": "Beck",
+   "songs": 1
+  },
+  {
+   "artist": "Bee Gees",
+   "songs": 1
+  },
+  {
+   "artist": "Berlin",
+   "songs": 1
+  },
+  {
+   "artist": "Big Mama Thorton",
+   "songs": 1
+  },
+  {
+   "artist": "Bill Chase",
+   "songs": 1
+  },
+  {
+   "artist": "Billy Idol",
+   "songs": 1
+  },
+  {
+   "artist": "Billy Joel",
+   "songs": 1
+  },
+  {
+   "artist": "Black Legend",
+   "songs": 1
+  },
+  {
+   "artist": "Blind Faith",
+   "songs": 1
+  },
+  {
+   "artist": "Blink 182",
+   "songs": 1
+  },
+  {
+   "artist": "Blood, Sweat, and Tears",
+   "songs": 1
+  },
+  {
+   "artist": "Blue Oyster Cult",
+   "songs": 1
+  },
+  {
+   "artist": "Blue Suede",
+   "songs": 1
+  },
+  {
+   "artist": "Blues Brothers Band",
+   "songs": 1
+  },
+  {
+   "artist": "Blur",
+   "songs": 1
+  },
+  {
+   "artist": "Boards of Canada",
+   "songs": 1
+  },
+  {
+   "artist": "Bob James",
+   "songs": 1
+  },
+  {
+   "artist": "Bobby Bloom",
+   "songs": 1
+  },
+  {
+   "artist": "Booker T and the MGs",
+   "songs": 1
+  },
+  {
+   "artist": "Bootsy Collins",
+   "songs": 1
+  },
+  {
+   "artist": "Brother Cane",
+   "songs": 1
+  },
+  {
+   "artist": "Buena Vista Social Club",
+   "songs": 1
+  },
+  {
+   "artist": "Buoys",
+   "songs": 1
+  },
+  {
+   "artist": "Caravan",
+   "songs": 1
+  },
+  {
+   "artist": "Carly Simon",
+   "songs": 1
+  },
+  {
+   "artist": "Carpenters",
+   "songs": 1
+  },
+  {
+   "artist": "Chappell Roan",
+   "songs": 1
+  },
+  {
+   "artist": "Charlie Daniels Band",
+   "songs": 1
+  },
+  {
+   "artist": "Cheap Trick",
+   "songs": 1
+  },
+  {
+   "artist": "Cheech and Chong",
+   "songs": 1
+  },
+  {
+   "artist": "Cher",
+   "songs": 1
+  },
+  {
+   "artist": "Chris Rea",
+   "songs": 1
+  },
+  {
+   "artist": "Christina Aguilera, et al.",
+   "songs": 1
+  },
+  {
+   "artist": "Cibo Mato",
+   "songs": 1
+  },
+  {
+   "artist": "Cinderella",
+   "songs": 1
+  },
+  {
+   "artist": "Clash",
+   "songs": 1
+  },
+  {
+   "artist": "Climax Blues Band",
+   "songs": 1
+  },
+  {
+   "artist": "Coal Chamber",
+   "songs": 1
+  },
+  {
+   "artist": "Commodores",
+   "songs": 1
+  },
+  {
+   "artist": "Cornelius Brothers and Sister Rose",
+   "songs": 1
+  },
+  {
+   "artist": "Count Five",
+   "songs": 1
+  },
+  {
+   "artist": "Cowboy Junkies",
+   "songs": 1
+  },
+  {
+   "artist": "Crazy Switch",
+   "songs": 1
+  },
+  {
+   "artist": "Crosby, Stills & Nash",
+   "songs": 1
+  },
+  {
+   "artist": "Crosby, Stills, Nash and Young",
+   "songs": 1
+  },
+  {
+   "artist": "Crosses",
+   "songs": 1
+  },
+  {
+   "artist": "Cult",
+   "songs": 1
+  },
+  {
+   "artist": "Curtis Mayfield",
+   "songs": 1
+  },
+  {
+   "artist": "Cycle Sluts From Hell",
+   "songs": 1
+  },
+  {
+   "artist": "Dag Nasty",
+   "songs": 1
+  },
+  {
+   "artist": "Dale Hawkins",
+   "songs": 1
+  },
+  {
+   "artist": "Dan Fogelberg",
+   "songs": 1
+  },
+  {
+   "artist": "Days of the New",
+   "songs": 1
+  },
+  {
+   "artist": "Dead or Alive",
+   "songs": 1
+  },
+  {
+   "artist": "Dee Lite",
+   "songs": 1
+  },
+  {
+   "artist": "Delbert McClinton",
+   "songs": 1
+  },
+  {
+   "artist": "Deliverance",
+   "songs": 1
+  },
+  {
+   "artist": "Detroit",
+   "songs": 1
+  },
+  {
+   "artist": "Dire Straights",
+   "songs": 1
+  },
+  {
+   "artist": "Dirtbombs",
+   "songs": 1
+  },
+  {
+   "artist": "Dirty Mary",
+   "songs": 1
+  },
+  {
+   "artist": "Disastronaut",
+   "songs": 1
+  },
+  {
+   "artist": "Discarded",
+   "songs": 1
+  },
+  {
+   "artist": "Disturbed",
+   "songs": 1
+  },
+  {
+   "artist": "Dixie Dregs",
+   "songs": 1
+  },
+  {
+   "artist": "Dolly Parton",
+   "songs": 1
+  },
+  {
+   "artist": "Don MacLean",
+   "songs": 1
+  },
+  {
+   "artist": "Donna Summer",
+   "songs": 1
+  },
+  {
+   "artist": "Donovan",
+   "songs": 1
+  },
+  {
+   "artist": "Doves",
+   "songs": 1
+  },
+  {
+   "artist": "Dragstrip Syndicate",
+   "songs": 1
+  },
+  {
+   "artist": "Drivin’ ‘N’ Cryin’",
+   "songs": 1
+  },
+  {
+   "artist": "D”Angelo",
+   "songs": 1
+  },
+  {
+   "artist": "Eagles",
+   "songs": 1
+  },
+  {
+   "artist": "Eddie Murphy",
+   "songs": 1
+  },
+  {
+   "artist": "Electric Prunes",
+   "songs": 1
+  },
+  {
+   "artist": "Emerson Lake and Palmer (ELP)",
+   "songs": 1
+  },
+  {
+   "artist": "EMF",
+   "songs": 1
+  },
+  {
+   "artist": "Eminem",
+   "songs": 1
+  },
+  {
+   "artist": "En Vogue",
+   "songs": 1
+  },
+  {
+   "artist": "Escape Club",
+   "songs": 1
+  },
+  {
+   "artist": "Every Time I Die",
+   "songs": 1
+  },
+  {
+   "artist": "Everything But the Girl",
+   "songs": 1
+  },
+  {
+   "artist": "Extreme",
+   "songs": 1
+  },
+  {
+   "artist": "Fatboy Slim",
+   "songs": 1
+  },
+  {
+   "artist": "Fire Engines",
+   "songs": 1
+  },
+  {
+   "artist": "Fireballs of Freedom",
+   "songs": 1
+  },
+  {
+   "artist": "Flaming Lips",
+   "songs": 1
+  },
+  {
+   "artist": "Flock of Seagulls",
+   "songs": 1
+  },
+  {
+   "artist": "Frank Zappa",
+   "songs": 1
+  },
+  {
+   "artist": "Free",
+   "songs": 1
+  },
+  {
+   "artist": "Front End Loader",
+   "songs": 1
+  },
+  {
+   "artist": "Gap Band",
+   "songs": 1
+  },
+  {
+   "artist": "Gentle Giant",
+   "songs": 1
+  },
+  {
+   "artist": "George Benson",
+   "songs": 1
+  },
+  {
+   "artist": "Golden Earring",
+   "songs": 1
+  },
+  {
+   "artist": "Gov’t Mule",
+   "songs": 1
+  },
+  {
+   "artist": "Grand Funk Railroad",
+   "songs": 1
+  },
+  {
+   "artist": "Greggers",
+   "songs": 1
+  },
+  {
+   "artist": "Gritty Kitty",
+   "songs": 1
+  },
+  {
+   "artist": "Guadalcanal Diary",
+   "songs": 1
+  },
+  {
+   "artist": "Guided by Voices",
+   "songs": 1
+  },
+  {
+   "artist": "GWAR",
+   "songs": 1
+  },
+  {
+   "artist": "Gypsy",
+   "songs": 1
+  },
+  {
+   "artist": "Head East",
+   "songs": 1
+  },
+  {
+   "artist": "Heart",
+   "songs": 1
+  },
+  {
+   "artist": "Heaven 17",
+   "songs": 1
+  },
+  {
+   "artist": "Hentchmen",
+   "songs": 1
+  },
+  {
+   "artist": "Hippos",
+   "songs": 1
+  },
+  {
+   "artist": "Honey Boy Martin",
+   "songs": 1
+  },
+  {
+   "artist": "Hot Hot Heat",
+   "songs": 1
+  },
+  {
+   "artist": "Huey Lewis and The News",
+   "songs": 1
+  },
+  {
+   "artist": "Hugh Masekela",
+   "songs": 1
+  },
+  {
+   "artist": "Human League",
+   "songs": 1
+  },
+  {
+   "artist": "Iggy And The Stooges",
+   "songs": 1
+  },
+  {
+   "artist": "Iggy Pop",
+   "songs": 1
+  },
+  {
+   "artist": "Inxs",
+   "songs": 1
+  },
+  {
+   "artist": "Isaac Hayes",
+   "songs": 1
+  },
+  {
+   "artist": "Jackie Moore",
+   "songs": 1
+  },
+  {
+   "artist": "Jaggerz",
+   "songs": 1
+  },
+  {
+   "artist": "Jam",
+   "songs": 1
+  },
+  {
+   "artist": "James Gang",
+   "songs": 1
+  },
+  {
+   "artist": "Janet Jackson",
+   "songs": 1
+  },
+  {
+   "artist": "Jeanette “Lady” Day",
+   "songs": 1
+  },
+  {
+   "artist": "Jefferson Starship",
+   "songs": 1
+  },
+  {
+   "artist": "Jennifer Trynin",
+   "songs": 1
+  },
+  {
+   "artist": "Jeremy Grey",
+   "songs": 1
+  },
+  {
+   "artist": "Jigsaw",
+   "songs": 1
+  },
+  {
+   "artist": "Jimmy Eat World",
+   "songs": 1
+  },
+  {
+   "artist": "Jimmy Fallon",
+   "songs": 1
+  },
+  {
+   "artist": "Joan Jet and the Black Hearts",
+   "songs": 1
+  },
+  {
+   "artist": "Joe Jackson",
+   "songs": 1
+  },
+  {
+   "artist": "John Denver",
+   "songs": 1
+  },
+  {
+   "artist": "John Lennon",
+   "songs": 1
+  },
+  {
+   "artist": "Johnny Rivers",
+   "songs": 1
+  },
+  {
+   "artist": "Judas Priest",
+   "songs": 1
+  },
+  {
+   "artist": "Juliana Hatfield",
+   "songs": 1
+  },
+  {
+   "artist": "KC & the Sunshine Band",
+   "songs": 1
+  },
+  {
+   "artist": "Kim Carnes",
+   "songs": 1
+  },
+  {
+   "artist": "Kingsmen",
+   "songs": 1
+  },
+  {
+   "artist": "King’s X",
+   "songs": 1
+  },
+  {
+   "artist": "KMFDM",
+   "songs": 1
+  },
+  {
+   "artist": "Knack",
+   "songs": 1
+  },
+  {
+   "artist": "Knacker",
+   "songs": 1
+  },
+  {
+   "artist": "LCD Soundsystem",
+   "songs": 1
+  },
+  {
+   "artist": "Len",
+   "songs": 1
+  },
+  {
+   "artist": "Les McCann & Eddie Harris",
+   "songs": 1
+  },
+  {
+   "artist": "Linkin Park",
+   "songs": 1
+  },
+  {
+   "artist": "Lionel Ritchie",
+   "songs": 1
+  },
+  {
+   "artist": "Lionel Ritchie and Diana Ross",
+   "songs": 1
+  },
+  {
+   "artist": "Lipps, Inc.",
+   "songs": 1
+  },
+  {
+   "artist": "Liquid Liquid",
+   "songs": 1
+  },
+  {
+   "artist": "Little Feat",
+   "songs": 1
+  },
+  {
+   "artist": "Little John",
+   "songs": 1
+  },
+  {
+   "artist": "LL Cool J",
+   "songs": 1
+  },
+  {
+   "artist": "Local H",
+   "songs": 1
+  },
+  {
+   "artist": "Lofreq",
+   "songs": 1
+  },
+  {
+   "artist": "Lords of Acid",
+   "songs": 1
+  },
+  {
+   "artist": "Lotion",
+   "songs": 1
+  },
+  {
+   "artist": "Lou Reed",
+   "songs": 1
+  },
+  {
+   "artist": "Love and Rockets",
+   "songs": 1
+  },
+  {
+   "artist": "Loverboy",
+   "songs": 1
+  },
+  {
+   "artist": "Lynyrd Skynyrd",
+   "songs": 1
+  },
+  {
+   "artist": "Major Lance",
+   "songs": 1
+  },
+  {
+   "artist": "Marvin Gaye",
+   "songs": 1
+  },
+  {
+   "artist": "Mary Clayton",
+   "songs": 1
+  },
+  {
+   "artist": "Matchbox Twenty",
+   "songs": 1
+  },
+  {
+   "artist": "Melissa Manchester",
+   "songs": 1
+  },
+  {
+   "artist": "Mellisa Ethridge",
+   "songs": 1
+  },
+  {
+   "artist": "Meters",
+   "songs": 1
+  },
+  {
+   "artist": "Miami Sound Machine",
+   "songs": 1
+  },
+  {
+   "artist": "Michael Jackson",
+   "songs": 1
+  },
+  {
+   "artist": "Midnight Oil",
+   "songs": 1
+  },
+  {
+   "artist": "Missy Elliot",
+   "songs": 1
+  },
+  {
+   "artist": "Moby Grape",
+   "songs": 1
+  },
+  {
+   "artist": "Montrose",
+   "songs": 1
+  },
+  {
+   "artist": "Mother Hips",
+   "songs": 1
+  },
+  {
+   "artist": "Move",
+   "songs": 1
+  },
+  {
+   "artist": "Mr. Bungle",
+   "songs": 1
+  },
+  {
+   "artist": "Mungo Jerry",
+   "songs": 1
+  },
+  {
+   "artist": "Nebula",
+   "songs": 1
+  },
+  {
+   "artist": "New Order",
+   "songs": 1
+  },
+  {
+   "artist": "New York Dolls",
+   "songs": 1
+  },
+  {
+   "artist": "Norah Jones",
+   "songs": 1
+  },
+  {
+   "artist": "Offspring",
+   "songs": 1
+  },
+  {
+   "artist": "Ohio Players",
+   "songs": 1
+  },
+  {
+   "artist": "Olivia Newton-John",
+   "songs": 1
+  },
+  {
+   "artist": "Outlaws",
+   "songs": 1
+  },
+  {
+   "artist": "Parliament Funkadelic",
+   "songs": 1
+  },
+  {
+   "artist": "Patsy Cline",
+   "songs": 1
+  },
+  {
+   "artist": "Paul McCartney & Wings",
+   "songs": 1
+  },
+  {
+   "artist": "Paul Simon",
+   "songs": 1
+  },
+  {
+   "artist": "Paul Weller",
+   "songs": 1
+  },
+  {
+   "artist": "Pavement",
+   "songs": 1
+  },
+  {
+   "artist": "Peaches and Herb",
+   "songs": 1
+  },
+  {
+   "artist": "Pebbles",
+   "songs": 1
+  },
+  {
+   "artist": "Perry Como",
+   "songs": 1
+  },
+  {
+   "artist": "Pet Shop Boys",
+   "songs": 1
+  },
+  {
+   "artist": "Pete Droge",
+   "songs": 1
+  },
+  {
+   "artist": "Peter Frampton",
+   "songs": 1
+  },
+  {
+   "artist": "Peter Wolfe",
+   "songs": 1
+  },
+  {
+   "artist": "Petony",
+   "songs": 1
+  },
+  {
+   "artist": "Phish",
+   "songs": 1
+  },
+  {
+   "artist": "Pink",
+   "songs": 1
+  },
+  {
+   "artist": "Pixies",
+   "songs": 1
+  },
+  {
+   "artist": "Player",
+   "songs": 1
+  },
+  {
+   "artist": "Porno for Pyros",
+   "songs": 1
+  },
+  {
+   "artist": "Powerstation",
+   "songs": 1
+  },
+  {
+   "artist": "Presidents of the USA",
+   "songs": 1
+  },
+  {
+   "artist": "Pretenders",
+   "songs": 1
+  },
+  {
+   "artist": "Procol Harum",
+   "songs": 1
+  },
+  {
+   "artist": "Puddle of Mudd",
+   "songs": 1
+  },
+  {
+   "artist": "Queens Of The Stone Age",
+   "songs": 1
+  },
+  {
+   "artist": "Queensryche",
+   "songs": 1
+  },
+  {
+   "artist": "Quincy Jones",
+   "songs": 1
+  },
+  {
+   "artist": "R.E.M.",
+   "songs": 1
+  },
+  {
+   "artist": "Rachael Yamagata",
+   "songs": 1
+  },
+  {
+   "artist": "Radio Four",
+   "songs": 1
+  },
+  {
+   "artist": "Rainbow",
+   "songs": 1
+  },
+  {
+   "artist": "Ramones",
+   "songs": 1
+  },
+  {
+   "artist": "Randy Edelman",
+   "songs": 1
+  },
+  {
+   "artist": "Raspberries",
+   "songs": 1
+  },
+  {
+   "artist": "Raw Power",
+   "songs": 1
+  },
+  {
+   "artist": "REO Speedwagon",
+   "songs": 1
+  },
+  {
+   "artist": "Robin Trower",
+   "songs": 1
+  },
+  {
+   "artist": "Rodney Dangerfield",
+   "songs": 1
+  },
+  {
+   "artist": "Rossington Collins Band",
+   "songs": 1
+  },
+  {
+   "artist": "Run DMC",
+   "songs": 1
+  },
+  {
+   "artist": "Salt n Pepper",
+   "songs": 1
+  },
+  {
+   "artist": "Sam and Dave",
+   "songs": 1
+  },
+  {
+   "artist": "Santana w/ Michelle Branch",
+   "songs": 1
+  },
+  {
+   "artist": "Scorpions",
+   "songs": 1
+  },
+  {
+   "artist": "Shania Twain",
+   "songs": 1
+  },
+  {
+   "artist": "Sheila E.",
+   "songs": 1
+  },
+  {
+   "artist": "Shirley Bassey",
+   "songs": 1
+  },
+  {
+   "artist": "Sigur Ros",
+   "songs": 1
+  },
+  {
+   "artist": "Simon & Garfunkle",
+   "songs": 1
+  },
+  {
+   "artist": "Simple Minds",
+   "songs": 1
+  },
+  {
+   "artist": "Sinead O’Connor",
+   "songs": 1
+  },
+  {
+   "artist": "Sir Mix-a-Lot",
+   "songs": 1
+  },
+  {
+   "artist": "Skid Row",
+   "songs": 1
+  },
+  {
+   "artist": "Slayer",
+   "songs": 1
+  },
+  {
+   "artist": "Smashing Pumpkins",
+   "songs": 1
+  },
+  {
+   "artist": "Soft Cell",
+   "songs": 1
+  },
+  {
+   "artist": "Son Volt",
+   "songs": 1
+  },
+  {
+   "artist": "Soundgarden",
+   "songs": 1
+  },
+  {
+   "artist": "Spade Cooley",
+   "songs": 1
+  },
+  {
+   "artist": "Spencer Davis Group",
+   "songs": 1
+  },
+  {
+   "artist": "Squad 5-0",
+   "songs": 1
+  },
+  {
+   "artist": "Squatweiler",
+   "songs": 1
+  },
+  {
+   "artist": "Stampeders",
+   "songs": 1
+  },
+  {
+   "artist": "Standells",
+   "songs": 1
+  },
+  {
+   "artist": "Stealer’s Wheel",
+   "songs": 1
+  },
+  {
+   "artist": "Steely Dan",
+   "songs": 1
+  },
+  {
+   "artist": "Stephen Stills",
+   "songs": 1
+  },
+  {
+   "artist": "Steve Miller",
+   "songs": 1
+  },
+  {
+   "artist": "Stevie Wonder",
+   "songs": 1
+  },
+  {
+   "artist": "Strawberry Alarm Clock",
+   "songs": 1
+  },
+  {
+   "artist": "Supertramp",
+   "songs": 1
+  },
+  {
+   "artist": "Sweet",
+   "songs": 1
+  },
+  {
+   "artist": "Swingin Medallions",
+   "songs": 1
+  },
+  {
+   "artist": "SWV",
+   "songs": 1
+  },
+  {
+   "artist": "Sylvers",
+   "songs": 1
+  },
+  {
+   "artist": "Syndicate of Sound",
+   "songs": 1
+  },
+  {
+   "artist": "Tantric",
+   "songs": 1
+  },
+  {
+   "artist": "The Association",
+   "songs": 1
+  },
+  {
+   "artist": "The Pretty Things",
+   "songs": 1
+  },
+  {
+   "artist": "The Refreshments",
+   "songs": 1
+  },
+  {
+   "artist": "The Tide is high",
+   "songs": 1
+  },
+  {
+   "artist": "They Might Be Giants",
+   "songs": 1
+  },
+  {
+   "artist": "Tim Curry",
+   "songs": 1
+  },
+  {
+   "artist": "Tim McGraw",
+   "songs": 1
+  },
+  {
+   "artist": "Tina Turner",
+   "songs": 1
+  },
+  {
+   "artist": "To Mnay Zooz",
+   "songs": 1
+  },
+  {
+   "artist": "Todd Rundgren",
+   "songs": 1
+  },
+  {
+   "artist": "Tom Jones",
+   "songs": 1
+  },
+  {
+   "artist": "Tom Petty",
+   "songs": 1
+  },
+  {
+   "artist": "Tom Petty & The Heartbreakers",
+   "songs": 1
+  },
+  {
+   "artist": "Tommy James & The Shondells",
+   "songs": 1
+  },
+  {
+   "artist": "Tone Loc",
+   "songs": 1
+  },
+  {
+   "artist": "Tony Orlando and Dawn",
+   "songs": 1
+  },
+  {
+   "artist": "Traffic",
+   "songs": 1
+  },
+  {
+   "artist": "Trapeze",
+   "songs": 1
+  },
+  {
+   "artist": "Tremeloes",
+   "songs": 1
+  },
+  {
+   "artist": "Trey Parker",
+   "songs": 1
+  },
+  {
+   "artist": "Twisted Sister",
+   "songs": 1
+  },
+  {
+   "artist": "Uncle Tupelo",
+   "songs": 1
+  },
+  {
+   "artist": "Urge Overkill",
+   "songs": 1
+  },
+  {
+   "artist": "US3",
+   "songs": 1
+  },
+  {
+   "artist": "USA For Africa",
+   "songs": 1
+  },
+  {
+   "artist": "Utopia",
+   "songs": 1
+  },
+  {
+   "artist": "Van der Graaf Generator",
+   "songs": 1
+  },
+  {
+   "artist": "Vanity Fair",
+   "songs": 1
+  },
+  {
+   "artist": "Vicious Circle",
+   "songs": 1
+  },
+  {
+   "artist": "Victoria Williams",
+   "songs": 1
+  },
+  {
+   "artist": "Vixen",
+   "songs": 1
+  },
+  {
+   "artist": "Wadsworth Mansion",
+   "songs": 1
+  },
+  {
+   "artist": "WAR",
+   "songs": 1
+  },
+  {
+   "artist": "Warrant",
+   "songs": 1
+  },
+  {
+   "artist": "White Witch",
+   "songs": 1
+  },
+  {
+   "artist": "Whitesnake",
+   "songs": 1
+  },
+  {
+   "artist": "Whitney Houston",
+   "songs": 1
+  },
+  {
+   "artist": "Wilco",
+   "songs": 1
+  },
+  {
+   "artist": "Wild Cherry",
+   "songs": 1
+  },
+  {
+   "artist": "Willie Bobo",
+   "songs": 1
+  },
+  {
+   "artist": "Wilson Picket",
+   "songs": 1
+  },
+  {
+   "artist": "Winger",
+   "songs": 1
+  },
+  {
+   "artist": "Woodshed",
+   "songs": 1
+  },
+  {
+   "artist": "XTC",
+   "songs": 1
+  },
+  {
+   "artist": "Yardbirds",
+   "songs": 1
+  },
+  {
+   "artist": "Yello",
+   "songs": 1
+  },
+  {
+   "artist": "Yes",
+   "songs": 1
+  },
+  {
+   "artist": "Ying Yang Twins",
+   "songs": 1
+  },
+  {
+   "artist": "Yo La Tengo",
+   "songs": 1
+  },
+  {
+   "artist": "You Am I",
+   "songs": 1
+  },
+  {
+   "artist": "Zager & Evans",
+   "songs": 1
+  }
+ ]
+}
