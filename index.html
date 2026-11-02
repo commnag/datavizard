@@ -515,18 +515,30 @@
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var NAMES = { light: 'Variant A · Daylight', dark: 'Variant B · Night' };
 
-    // Preview the hovered or focused variant on the page behind the panel; fall back to the system theme.
-    function settle() {
+    // Preview the variant under the pointer (or the one reached with the keyboard) on the page behind
+    // the panel; with neither, show the system theme. The preview is always derived from this state,
+    // never from the order events happen to fire in.
+    var hovered = null, focused = null, keyboard = false, settleTimer;
+    function apply() {
       if (picked) return;
-      var f = document.activeElement, t = f && f.getAttribute && f.getAttribute('data-pick');
+      var t = hovered || focused;
       if (t) root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
     }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Tab' || e.key.indexOf('Arrow') === 0) keyboard = true; });
+    document.addEventListener('pointerdown', function () { keyboard = false; });
     [].forEach.call(gate.querySelectorAll('[data-pick]'), function (b) {
       var t = b.getAttribute('data-pick');
-      b.addEventListener('pointerenter', function (e) { if (!picked && e.pointerType === 'mouse') root.setAttribute('data-theme', t); });
-      b.addEventListener('pointerleave', function () { setTimeout(settle, 0); });
-      b.addEventListener('focus', function () { if (!picked) root.setAttribute('data-theme', t); });
-      b.addEventListener('blur', function () { setTimeout(settle, 0); });
+      b.addEventListener('pointerenter', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        clearTimeout(settleTimer); hovered = t; apply();
+      });
+      b.addEventListener('pointerleave', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        if (hovered === t) hovered = null;
+        clearTimeout(settleTimer); settleTimer = setTimeout(apply, 90);   // ride out the gap between the two tiles
+      });
+      b.addEventListener('focus', function () { focused = keyboard ? t : null; apply(); });
+      b.addEventListener('blur', function () { if (focused === t) focused = null; apply(); });
     });
 
     // Lift the blur and let the card float away, so the portfolio comes into focus.
