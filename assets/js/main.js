@@ -8,13 +8,19 @@
 
   $('#year').textContent = new Date().getFullYear();
 
-  // Theme toggle (persisted per browser)
+  // Theme toggle (this visit only; the choice is never stored)
   $('#theme').addEventListener('click', function () {
     var current = root.getAttribute('data-theme') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     var next = current === 'dark' ? 'light' : 'dark';
+    window.track('toggle-' + (next === 'dark' ? 'dark' : 'light'));
     root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // Count clicks on anything marked data-track (profile links, dashboard link)
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-track]');
+    if (el) window.track(el.getAttribute('data-track'));
   });
 
   // Top bar: the small name appears once the big one scrolls away; background fades in on scroll
