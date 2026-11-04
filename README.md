@@ -9,7 +9,8 @@ Static site: plain HTML, CSS and a little JS. No build step.
 
 - `index.html`: all page content
 - `assets/css/style.css`: design tokens (pastel palette, light and dark) and styles
-- `assets/js/main.js`: theme toggle, hero chart deck, scroll effects, cursor glow
+- `assets/js/main.js`: theme toggle, hero chart deck, scroll effects, analytics overlay
+- `assets/js/magic.js`: the footprint trail that follows the cursor
 - `dashboards/`: one folder per dashboard, each self-contained
 
 ## Preview locally

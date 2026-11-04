@@ -37,6 +37,55 @@
 </head>
 <body>
 
+<!-- A tiny picture of the portfolio page; each tile sets the theme colours it uses -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="mini-page" viewBox="0 0 180 262" preserveAspectRatio="xMidYMin slice">
+    <rect width="180" height="262" class="pg-paper"/>
+    <!-- top bar -->
+    <rect x="14" y="9" width="46" height="5" rx="2.5" class="pg-ink pg-70"/>
+    <circle cx="164" cy="11.5" r="6" class="pg-none pg-stroke"/>
+    <!-- name and role -->
+    <rect x="30" y="34" width="120" height="13" rx="3.5" class="pg-ink"/>
+    <rect x="58" y="57" width="64" height="5" class="pg-sky"/>
+    <rect x="62" y="53" width="56" height="7" rx="2" class="pg-ink pg-60"/>
+    <!-- profile links -->
+    <g class="pg-ink pg-50">
+      <circle cx="22" cy="75" r="2.3"/><rect x="27" y="73.5" width="13" height="3" rx="1.5"/>
+      <circle cx="53" cy="75" r="2.3"/><rect x="58" y="73.5" width="13" height="3" rx="1.5"/>
+      <circle cx="84" cy="75" r="2.3"/><rect x="89" y="73.5" width="13" height="3" rx="1.5"/>
+      <circle cx="115" cy="75" r="2.3"/><rect x="120" y="73.5" width="13" height="3" rx="1.5"/>
+      <circle cx="146" cy="75" r="2.3"/><rect x="151" y="73.5" width="13" height="3" rx="1.5"/>
+    </g>
+    <!-- headline and the chart deck -->
+    <g class="pg-ink">
+      <rect x="14" y="100" width="64" height="7" rx="2"/><rect x="14" y="111" width="54" height="7" rx="2"/><rect x="14" y="122" width="58" height="7" rx="2"/>
+    </g>
+    <g class="pg-ink pg-40">
+      <rect x="14" y="138" width="62" height="3" rx="1.5"/><rect x="14" y="145" width="58" height="3" rx="1.5"/><rect x="14" y="152" width="40" height="3" rx="1.5"/>
+    </g>
+    <rect x="96" y="92" width="66" height="8" rx="4" class="pg-mint"/>
+    <rect x="90" y="97" width="78" height="8" rx="4" class="pg-sky"/>
+    <rect x="86" y="102" width="86" height="62" rx="8" class="pg-lilac"/>
+    <rect x="94" y="110" width="34" height="4" rx="2" class="pg-ink pg-80"/>
+    <rect x="94" y="118" width="62" height="2.5" rx="1.25" class="pg-ink pg-40"/>
+    <g class="pg-green"><rect x="96" y="144" width="9" height="14" rx="1.5"/><rect x="109" y="138" width="9" height="20" rx="1.5"/><rect x="122" y="132" width="9" height="26" rx="1.5"/><rect x="135" y="126" width="9" height="32" rx="1.5"/></g>
+    <g class="pg-ink pg-30"><circle cx="119" cy="172" r="2"/><circle cx="127" cy="172" r="2"/><circle cx="135" cy="172" r="2"/></g>
+    <!-- experience: section title, timeline, two rows -->
+    <rect x="14" y="196" width="46" height="8" rx="2.5" class="pg-ink"/>
+    <rect x="15.2" y="216" width="1.6" height="46" class="pg-line"/>
+    <circle cx="16" cy="218" r="3.6" class="pg-ink"/>
+    <rect x="25" y="215" width="34" height="4.5" rx="2" class="pg-ink pg-90"/>
+    <rect x="25" y="223" width="22" height="3" rx="1.5" class="pg-ink pg-40"/>
+    <rect x="72" y="214" width="50" height="5" class="pg-lilac"/>
+    <rect x="72" y="213" width="46" height="6" rx="2" class="pg-ink pg-90"/>
+    <rect x="72" y="224" width="94" height="1" class="pg-line"/>
+    <rect x="72" y="231" width="52" height="4" rx="2" class="pg-ink pg-80"/>
+    <rect x="136" y="230" width="13" height="6" rx="3" class="pg-lilac"/><rect x="151" y="230" width="15" height="6" rx="3" class="pg-sky"/>
+    <g class="pg-ink pg-40"><rect x="72" y="240" width="94" height="3" rx="1.5"/><rect x="72" y="246" width="78" height="3" rx="1.5"/></g>
+    <rect x="72" y="254" width="94" height="1" class="pg-line"/>
+  </symbol>
+</svg>
+
 <!-- Theme gate: a small A/B test panel over the live page -->
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t">
   <div class="gate-card" id="gate-card">
@@ -45,20 +94,12 @@
         <p class="gate-t" id="gate-t">Which theme do you prefer?</p>
         <div class="variants">
           <button class="variant variant-a" type="button" data-pick="light">
-            <span class="v">Variant A</span>
-            <span class="vname">Daylight</span>
-            <svg viewBox="0 0 200 80" aria-hidden="true">
-              <polyline class="g-ctrl" points="6,52 44,50 82,53 100,48 138,40 194,32"/>
-              <polyline class="g-treat" points="6,70 44,68 82,71 100,66 138,44 194,12"/>
-            </svg>
+            <span class="thumb"><svg aria-hidden="true"><use href="#mini-page" width="100%" height="100%"/></svg></span>
+            <span class="cap"><span class="vname">Daylight</span><span class="v">Variant A</span></span>
           </button>
           <button class="variant variant-b" type="button" data-pick="dark">
-            <span class="v">Variant B</span>
-            <span class="vname">Night</span>
-            <svg viewBox="0 0 200 80" aria-hidden="true">
-              <polyline class="g-ctrl" points="6,52 44,50 82,53 100,48 138,40 194,32"/>
-              <polyline class="g-treat" points="6,70 44,68 82,71 100,66 138,44 194,12"/>
-            </svg>
+            <span class="thumb"><svg aria-hidden="true"><use href="#mini-page" width="100%" height="100%"/></svg></span>
+            <span class="cap"><span class="vname">Night</span><span class="v">Variant B</span></span>
           </button>
         </div>
       </div>
@@ -71,6 +112,61 @@
   </div>
 </div>
 
+<!-- Results overlay: how the theme A/B test is going, read from GoatCounter's public counter -->
+<div class="stats" id="stats" role="dialog" aria-modal="true" aria-labelledby="stats-t" hidden>
+  <div class="stats-card">
+    <button class="icon-btn stats-x" id="stats-x" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <p class="stats-pill">Work In Progress</p>
+    <p class="stats-t" id="stats-t">How's the experiment going?</p>
+    <p class="stats-sub">The theme A/B test, live. Counts can lag by a few hours.</p>
+
+    <p class="stats-msg" id="stats-msg" hidden>Can't reach the counter right now. Try again in a bit.</p>
+
+    <div id="stats-body">
+      <div class="s-block">
+        <p class="s-label">Visits so far</p>
+        <p class="s-big" id="s-visits">&ndash;</p>
+      </div>
+
+      <div class="s-block" id="s-funnel">
+        <p class="s-label">What happened to those visits</p>
+        <div class="fn-bar" id="fn-bar" aria-hidden="true"><i class="f-picked"></i><i class="f-skipped"></i><i class="f-left"></i><i class="f-none"></i></div>
+        <ul class="fn-list">
+          <li id="fn-picked"><span class="fn-dot f-picked"></span><span class="fn-name">Picked a theme</span><span class="fn-n">&ndash;</span><span class="fn-p"></span></li>
+          <li id="fn-skipped"><span class="fn-dot f-skipped"></span><span class="fn-name">Skipped with Esc</span><span class="fn-n">&ndash;</span><span class="fn-p"></span></li>
+          <li id="fn-left"><span class="fn-dot f-left"></span><span class="fn-name">Left at the card</span><span class="fn-n">&ndash;</span><span class="fn-p"></span></li>
+          <li id="fn-none"><span class="fn-dot f-none"></span><span class="fn-name">Not tracked</span><span class="fn-n">&ndash;</span><span class="fn-p"></span></li>
+        </ul>
+        <p class="fn-note">Leaving is only logged from now on, so earlier visits show up as not tracked.</p>
+      </div>
+
+      <div class="s-block">
+        <p class="s-label">Daylight vs Night</p>
+        <div class="duel-row" id="duel-a">
+          <span class="duel-name"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Daylight</span>
+          <span class="duel-bar"><i></i></span><span class="duel-n">&ndash;</span>
+        </div>
+        <div class="duel-row" id="duel-b">
+          <span class="duel-name"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>Night</span>
+          <span class="duel-bar"><i></i></span><span class="duel-n">&ndash;</span>
+        </div>
+        <p class="s-verdict" id="s-verdict"></p>
+      </div>
+
+      <div class="s-block">
+        <p class="s-label">This week vs last week</p>
+        <div class="tiles">
+          <div class="tile2" id="wk-visits"><p class="t-name">Visits</p><p class="t-num">&ndash;</p><p class="t-d"></p></div>
+          <div class="tile2" id="wk-a"><p class="t-name">Daylight</p><p class="t-num">&ndash;</p><p class="t-d"></p></div>
+          <div class="tile2" id="wk-b"><p class="t-name">Night</p><p class="t-num">&ndash;</p><p class="t-d"></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <canvas class="trail" id="trail" aria-hidden="true"></canvas>
 
 <header class="bar">
@@ -78,6 +174,9 @@
   <button class="icon-btn" id="theme" type="button" aria-label="Toggle colour theme">
     <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
     <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+  <button class="icon-btn stats-btn" id="stats-btn" type="button" aria-haspopup="dialog" aria-label="See how the theme A/B test is going" data-track="open-analytics">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20v-8M12 20V5M19 20v-10"/></svg>
   </button>
 </header>
 
@@ -142,7 +241,7 @@
             <!-- 2. Scenario simulation -->
             <article class="card k-data" data-pos="1" aria-hidden="true">
               <div class="card-in">
-                <p class="card-t">Scenario simulation</p>
+                <p class="card-t">Scenario Simulation</p>
                 <p class="card-d">Model several scenarios at once and rank them by expected value, so teams can compare options before committing.</p>
                 <svg viewBox="0 0 600 420" role="img" aria-label="Five scenarios ranked by expected value, each with a simulated range. The top scenario is highlighted.">
                   <text class="lbl muted fade" style="--delay:.1s" x="40" y="50">Scenario A</text>
@@ -353,7 +452,7 @@
           <div class="deck-nav">
             <div class="dots" role="group" aria-label="Choose a chart">
               <button class="dot" type="button" aria-label="Causal impact" aria-current="true"></button>
-              <button class="dot" type="button" aria-label="Scenario simulation"></button>
+              <button class="dot" type="button" aria-label="Scenario Simulation"></button>
               <button class="dot" type="button" aria-label="Uplift analysis"></button>
               <button class="dot" type="button" aria-label="Forecasting and targets"></button>
               <button class="dot" type="button" aria-label="Root-cause analysis"></button>
@@ -377,27 +476,26 @@
           <div class="stop-meta">
             <p class="org">Expedia Group</p>
             <p class="yrs">2023 – now</p>
-            <div class="mix" data-mix aria-hidden="true"></div>
           </div>
           <div class="stop-body">
             <h4><span>Data Scientist II</span> <small>Vrbo Supply Operations</small></h4>
             <ul class="items">
-              <li class="item"><div class="item-h"><h5>Forecasting and target setting</h5><span class="tags"><b class="k-stat">Forecasting</b><b class="k-stat">Time series</b></span></div><p>Built time-series forecasts (SARIMA, ETS and moving averages) to set annual performance targets for large field teams, blending seasonality, productivity drivers and planned initiatives into benchmarks used across the business.</p></li>
-              <li class="item"><div class="item-h"><h5>Performance reporting and diagnostics</h5><span class="tags"><b class="k-viz">Dashboards</b><b class="k-viz">Storytelling</b></span></div><p>Owned recurring weekly, monthly and quarterly performance reviews for multiple stakeholder groups, tracking attainment against target and year over year, diagnosing what drove each shift, and maintaining the supporting dashboards.</p></li>
-              <li class="item"><div class="item-h"><h5>Scenario simulation</h5><span class="tags"><b class="k-data">Python</b><b class="k-data">PySpark</b><b class="k-stat">Simulation</b></span></div><p>Built a Python and PySpark simulator that models several scenarios at once and shows how each one changes expected-value rankings, so teams can compare prioritization options before committing.</p></li>
-              <li class="item"><div class="item-h"><h5>Measurement window optimization</h5><span class="tags"><b class="k-stat">Statistics</b><b class="k-stat">Attribution</b></span></div><p>Applied statistical analysis to shorten a long attribution window, so outcomes matured sooner while historical impact stayed minimal and double-counting fell by 20–25%.</p></li>
-              <li class="item"><div class="item-h"><h5>Causal impact estimation</h5><span class="tags"><b class="k-stat">Causal inference</b><b class="k-stat">Difference-in-Differences</b></span></div><p>Estimated incremental uplift at scale with a Difference-in-Differences framework and co-treatment adjustments, then partnered with product and machine-learning teams to put the revised logic into production.</p></li>
-              <li class="item"><div class="item-h"><h5>Attribution modelling and automation</h5><span class="tags"><b class="k-data">SQL</b><b class="k-ai">Agentic AI</b><b class="k-ai">Automation</b></span></div><p>Designed SQL attribution logic that links a large program's value to downstream transactions and interactions for channel-level reporting, and automated the workflow with agentic AI tooling.</p></li>
-              <li class="item"><div class="item-h"><h5>Data pipelines and data products</h5><span class="tags"><b class="k-data">Spark</b><b class="k-data">Airflow</b><b class="k-data">SQL</b></span></div><p>Wrote SQL logic that runs as scheduled Spark jobs on an orchestrated workflow, feeding downstream tables used by CRM, marketing-automation and internal services.</p></li>
-              <li class="item"><div class="item-h"><h5>Metric standardization</h5><span class="tags"><b class="k-viz">Metric design</b><b class="k-viz">KPIs</b></span></div><p>Consolidated several misaligned data sources into a single weekly productivity metric that leadership now uses to benchmark teams against baselines.</p></li>
-              <li class="item"><div class="item-h"><h5>Root-cause analysis and reliability</h5><span class="tags"><b class="k-data">Root cause</b><b class="k-ai">Agentic AI</b></span></div><p>Led 100+ investigations into attribution and data-quality issues with product and engineering partners, and built an AI-assisted debugging workflow that cut turnaround by roughly 75–80%.</p></li>
+              <li class="item"><div class="item-h"><h5>Forecasting and Target Setting</h5><span class="tags"><b class="k-stat">Forecasting</b><b class="k-stat">Time series</b></span></div><p>Built time-series forecasts (SARIMA, ETS and moving averages) to set annual performance targets for large field teams, blending seasonality, productivity drivers and planned initiatives into benchmarks used across the business.</p></li>
+              <li class="item"><div class="item-h"><h5>Performance Reporting and Diagnostics</h5><span class="tags"><b class="k-viz">Dashboards</b><b class="k-viz">Storytelling</b></span></div><p>Owned recurring weekly, monthly and quarterly performance reviews for multiple stakeholder groups, tracking attainment against target and year over year, diagnosing what drove each shift, and maintaining the supporting dashboards.</p></li>
+              <li class="item"><div class="item-h"><h5>Scenario Simulation</h5><span class="tags"><b class="k-data">Python</b><b class="k-data">PySpark</b><b class="k-stat">Simulation</b></span></div><p>Built a Python and PySpark simulator that models several scenarios at once and shows how each one changes expected-value rankings, so teams can compare prioritization options before committing.</p></li>
+              <li class="item"><div class="item-h"><h5>Measurement Window Optimization</h5><span class="tags"><b class="k-stat">Statistics</b><b class="k-stat">Attribution</b></span></div><p>Applied statistical analysis to shorten a long attribution window, so outcomes matured sooner while historical impact stayed minimal and double-counting fell by 20–25%.</p></li>
+              <li class="item"><div class="item-h"><h5>Causal Impact Estimation</h5><span class="tags"><b class="k-stat">Causal inference</b><b class="k-stat">Difference-in-Differences</b></span></div><p>Estimated incremental uplift at scale with a Difference-in-Differences framework and co-treatment adjustments, then partnered with product and machine-learning teams to put the revised logic into production.</p></li>
+              <li class="item"><div class="item-h"><h5>Attribution Modelling and Automation</h5><span class="tags"><b class="k-data">SQL</b><b class="k-ai">Agentic AI</b><b class="k-ai">Automation</b></span></div><p>Designed SQL attribution logic that links a large program's value to downstream transactions and interactions for channel-level reporting, and automated the workflow with agentic AI tooling.</p></li>
+              <li class="item"><div class="item-h"><h5>Data Pipelines and Data Products</h5><span class="tags"><b class="k-data">Spark</b><b class="k-data">Airflow</b><b class="k-data">SQL</b></span></div><p>Wrote SQL logic that runs as scheduled Spark jobs on an orchestrated workflow, feeding downstream tables used by CRM, marketing-automation and internal services.</p></li>
+              <li class="item"><div class="item-h"><h5>Metric Standardization</h5><span class="tags"><b class="k-viz">Metric design</b><b class="k-viz">KPIs</b></span></div><p>Consolidated several misaligned data sources into a single weekly productivity metric that leadership now uses to benchmark teams against baselines.</p></li>
+              <li class="item"><div class="item-h"><h5>Root-cause Analysis and Reliability</h5><span class="tags"><b class="k-data">Root cause</b><b class="k-ai">Agentic AI</b></span></div><p>Led 100+ investigations into attribution and data-quality issues with product and engineering partners, and built an AI-assisted debugging workflow that cut turnaround by roughly 75–80%.</p></li>
             </ul>
 
             <h4><span>Data Visualization Engineer</span> <small>Product analytics and experimentation</small></h4>
             <ul class="items">
               <li class="item"><div class="item-h"><h5>Self-service analytics tooling</h5><span class="tags"><b class="k-viz">Self-serve BI</b><b class="k-viz">Product metrics</b></span></div><p>Built a self-serve tool with multiple product metrics and 15+ configurable dimensions, so 200+ weekly users could analyze performance without analyst support.</p></li>
-              <li class="item"><div class="item-h"><h5>Executive scorecards</h5><span class="tags"><b class="k-viz">Scorecard</b><b class="k-viz">KPIs</b></span></div><p>Developed a 30+ metric scorecard across five analytical domains that gives leadership one place to monitor key business KPIs, adopted by well over a thousand users.</p></li>
-              <li class="item"><div class="item-h"><h5>Cohort and retention analytics</h5><span class="tags"><b class="k-stat">Cohorts</b><b class="k-stat">Retention</b></span></div><p>Developed cohort retention analysis that surfaces customer drop-off patterns and segment-level behavioural trends, used to inform retention strategy.</p></li>
+              <li class="item"><div class="item-h"><h5>Executive Scorecards</h5><span class="tags"><b class="k-viz">Scorecard</b><b class="k-viz">KPIs</b></span></div><p>Developed a 30+ metric scorecard across five analytical domains that gives leadership one place to monitor key business KPIs, adopted by well over a thousand users.</p></li>
+              <li class="item"><div class="item-h"><h5>Cohort and Retention Analytics</h5><span class="tags"><b class="k-stat">Cohorts</b><b class="k-stat">Retention</b></span></div><p>Developed cohort retention analysis that surfaces customer drop-off patterns and segment-level behavioural trends, used to inform retention strategy.</p></li>
             </ul>
           </div>
         </li>
@@ -406,28 +504,41 @@
           <div class="stop-meta">
             <p class="org">Accenture</p>
             <p class="yrs">2020 – 23</p>
-            <div class="mix" data-mix aria-hidden="true"></div>
           </div>
           <div class="stop-body">
             <h4><span>Application Development Analyst</span></h4>
             <ul class="items">
-              <li class="item"><div class="item-h"><h5>Backend services</h5><span class="tags"><b class="k-data">Java</b><b class="k-data">Spring Boot</b><b class="k-data">Docker</b></span></div><p>Designed and built RESTful APIs and microservices for a B2B e-commerce application in Java Spring Boot, containerized with Docker and covered by automated tests.</p></li>
-              <li class="item"><div class="item-h"><h5>Database performance</h5><span class="tags"><b class="k-data">Oracle SQL</b><b class="k-data">Performance</b></span></div><p>Optimized Oracle SQL queries and contributed to schema design, resolving production bottlenecks and improving database reliability.</p></li>
+              <li class="item"><div class="item-h"><h5>Backend Services</h5><span class="tags"><b class="k-data">Java</b><b class="k-data">Spring Boot</b><b class="k-data">Docker</b></span></div><p>Designed and built RESTful APIs and microservices for a B2B e-commerce application in Java Spring Boot, containerized with Docker and covered by automated tests.</p></li>
+              <li class="item"><div class="item-h"><h5>Database Performance</h5><span class="tags"><b class="k-data">Oracle SQL</b><b class="k-data">Performance</b></span></div><p>Optimized Oracle SQL queries and contributed to schema design, resolving production bottlenecks and improving database reliability.</p></li>
             </ul>
           </div>
         </li>
 
-        <li class="stop stop-edu">
-          <div class="stop-meta">
-            <p class="org">Punjab Technical University</p>
-            <p class="yrs">2016 – 20</p>
-          </div>
-          <div class="stop-body">
+      </ol>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <ol class="schools">
+        <li class="school">
+          <p class="org">Punjab Technical University</p>
+          <p class="yrs">2016 – 20</p>
+          <div class="school-body">
             <h4>B.Tech, Computer Science <small>8.22 CGPA</small></h4>
             <p class="topics"><span>Topics studied:</span> Machine Learning, Data Science, Business Analytics, Python, Java, DBMS, DSA</p>
           </div>
         </li>
-
+        <li class="school">
+          <p class="org">Army Public School, Allahabad</p>
+          <p class="yrs">2016</p>
+          <div class="school-body">
+            <h4>XIIth <small>92.8%</small></h4>
+            <p class="topics"><span>Subjects:</span> Physics, Chemistry, Maths</p>
+          </div>
+        </li>
       </ol>
     </div>
   </section>
@@ -440,7 +551,6 @@
       <div class="kit">
         <div class="kit-col">
           <h3>Technical skills</h3>
-          <p class="sub">Bold marks the tools I reach for most.</p>
 
           <ul class="core-list tech">
             <li class="k-data"><strong>Data and engineering</strong><span><b>SQL</b>, <b>Python</b> and <b>Apache Spark</b> day to day, plus Pandas, NumPy, Databricks, Airflow, JupyterHub, R and Java.</span></li>
@@ -452,7 +562,6 @@
 
         <div class="kit-col">
           <h3>Core skills</h3>
-          <p class="sub">The business side, shown by what I've done.</p>
           <ul class="core-list">
             <li><strong>Stakeholder collaboration</strong><span>Recurring reviews with business leaders, and partnering with product, engineering and ML teams to ship analysis as production logic.</span></li>
             <li><strong>Data storytelling</strong><span>Explaining what drove each shift, not only what the number was.</span></li>
@@ -524,13 +633,14 @@
       var t = hovered || focused;
       if (t) root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
     }
-    document.addEventListener('keydown', function (e) { if (e.key === 'Tab' || e.key.indexOf('Arrow') === 0) keyboard = true; });
-    document.addEventListener('pointerdown', function () { keyboard = false; });
+    // The focus ring only shows once the keyboard is used, so the automatic first focus never looks like a selection.
+    document.addEventListener('keydown', function (e) { if (e.key === 'Tab' || e.key.indexOf('Arrow') === 0) { keyboard = true; gate.classList.add('kbd'); } });
+    document.addEventListener('pointerdown', function () { keyboard = false; gate.classList.remove('kbd'); });
     [].forEach.call(gate.querySelectorAll('[data-pick]'), function (b) {
       var t = b.getAttribute('data-pick');
       b.addEventListener('pointerenter', function (e) {
         if (e.pointerType !== 'mouse') return;
-        clearTimeout(settleTimer); hovered = t; apply();
+        gate.classList.remove('kbd'); clearTimeout(settleTimer); hovered = t; apply();
       });
       b.addEventListener('pointerleave', function (e) {
         if (e.pointerType !== 'mouse') return;
@@ -591,11 +701,21 @@
       var n = Math.max(typeof remote === 'number' ? remote + 1 : 0, typeof mine === 'number' ? mine + 1 : 0);
       if (!skipped && n > 0) { saveTally(t, n); showCount(t, n); } else leave();
     }
+    // Someone closing or leaving the page with the card still open and no choice made: log it, so the
+    // difference between visits and picks can be explained. Once per page load.
+    var leftLogged = false;
+    window.addEventListener('pagehide', function () {
+      if (picked || leftLogged || !root.classList.contains('gate-open')) return;
+      leftLogged = true;
+      window.track('gate-left');
+    });
+
     gate.addEventListener('click', function (e) { var b = e.target.closest('[data-pick]'); if (b && !picked) pick(b.getAttribute('data-pick')); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('gate-open')) { if (picked) leave(); else pick(sys, true); } });
   })();
 </script>
 <script src="assets/js/main.js" defer></script>
+<script src="assets/js/magic.js" defer></script>
 <script data-goatcounter="https://abhisheknag.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </body>

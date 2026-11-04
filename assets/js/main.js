@@ -33,19 +33,6 @@
     }, { rootMargin: '-60px 0px 0px 0px' }).observe(big);
   } else { brand.classList.add('show'); bar.classList.add('solid'); }
 
-  // Skill mix: a segmented bar per role, sized by how many of its tags fall in each family
-  var FAMILIES = [['k-stat', 'Statistics'], ['k-data', 'Data engineering'], ['k-viz', 'Visualization and reporting'], ['k-ai', 'AI and automation']];
-  $$('[data-mix]').forEach(function (box) {
-    var stop = box.closest('.stop'), bars = '', total = 0;
-    FAMILIES.forEach(function (f) {
-      var n = $$('.tags b.' + f[0], stop).length;
-      if (!n) return;
-      total += n;
-      bars += '<i class="' + f[0] + '" style="flex:' + n + '" title="' + f[1] + ': ' + n + '"></i>';
-    });
-    if (total) box.innerHTML = '<p class="mix-cap">Skill mix</p><div class="mix-bar">' + bars + '</div>';
-  });
-
   // Career spine fills as the experience section scrolls through the viewport
   var spine = $('#trajectory'), stops = $$('.stop', spine || document);
   function fillSpine() {
@@ -121,6 +108,133 @@
     }
   })();
 
+  // Results overlay: how the theme A/B test is going, read from GoatCounter's public visitor counter.
+  // Ranges are UTC and the end date is exclusive. Numbers are fetched on idle or on hover, so they are
+  // ready when the button is pressed.
+  (function () {
+    var btn = $('#stats-btn'), box = $('#stats');
+    if (!btn || !box) return;
+    var BASE = 'https://abhisheknag.goatcounter.com/counter/';
+    // path to read, and which ranges to ask for (all time is enough for the funnel counts)
+    var WEEKLY = ['all', 'week', 'prev'], ALL = ['all'];
+    var SOURCES = { visits: ['%2Fdatavizard', WEEKLY], a: ['gate-daylight', WEEKLY], b: ['gate-night', WEEKLY], skipped: ['gate-skipped', ALL], left: ['gate-left', ALL] };
+    function day(offset) { var d = new Date(); d.setUTCHours(0, 0, 0, 0); d.setUTCDate(d.getUTCDate() + offset); return d.toISOString().slice(0, 10); }
+    var RANGES = { all: '?start=2026-01-01', week: '?start=' + day(-6) + '&end=' + day(1), prev: '?start=' + day(-13) + '&end=' + day(-6) };
+    var data = null, loading = null, lastFocus = null;
+
+    function get(path, range) {
+      try {
+        return fetch(BASE + path + '.json' + range)
+          .then(function (res) { return res.ok || res.status === 404 ? res.json() : null; })
+          .then(function (j) { var n = j ? parseInt(String(j.count).replace(/\D/g, ''), 10) : NaN; return n >= 0 ? n : null; })
+          .catch(function () { return null; });
+      } catch (e) { return Promise.resolve(null); }
+    }
+    function load() {
+      if (loading) return loading;
+      var jobs = [];
+      Object.keys(SOURCES).forEach(function (k) {
+        SOURCES[k][1].forEach(function (r) { jobs.push(get(SOURCES[k][0], RANGES[r]).then(function (n) { return [k, r, n]; })); });
+      });
+      loading = Promise.all(jobs).then(function (rows) {
+        var d = {}; rows.forEach(function (x) { (d[x[0]] = d[x[0]] || {})[x[1]] = x[2]; });
+        data = d; return d;
+      });
+      return loading;
+    }
+    function fmt(n) { return n === null || n === undefined ? '\u2013' : n.toLocaleString(); }
+
+    function countUp(el, n) {
+      if (reduce || n === null || n < 8) { el.textContent = fmt(n); return; }
+      var t0 = null;
+      (function step(ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / 800);
+        el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))).toLocaleString();
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    function tile(id, d) {
+      var el = $('#' + id), num = $('.t-num', el), note = $('.t-d', el);
+      num.textContent = fmt(d.week);
+      note.className = 't-d';
+      if (d.week === null || d.prev === null) { note.textContent = ''; return; }
+      if (d.prev === 0) { note.textContent = d.week > 0 ? 'New this week' : 'Quiet so far'; if (d.week > 0) note.classList.add('up'); return; }
+      var diff = d.week - d.prev;
+      if (diff > 0) { note.classList.add('up'); note.textContent = '+' + diff + ' on last week'; }
+      else if (diff < 0) { note.classList.add('down'); note.textContent = '\u2212' + Math.abs(diff) + ' on last week'; }
+      else note.textContent = 'Same as last week';
+    }
+    // Where did the visits go: picked a theme, skipped with Esc, left at the card, or not tracked
+    // (blockers, bots, and counters that lag behind each other). Percentages are of whichever is larger,
+    // the visits or the sum of what was counted, so the bar never overflows when the counters are out of step.
+    function funnel(d) {
+      var V = d.visits.all, box = $('#s-funnel');
+      box.hidden = V === null;
+      if (V === null) return;
+      var picked = (d.a.all || 0) + (d.b.all || 0), skipped = d.skipped.all || 0, left = d.left.all || 0;
+      var counted = picked + skipped + left, total = Math.max(V, counted), none = Math.max(0, V - counted);
+      var parts = [['fn-picked', picked, 'f-picked'], ['fn-skipped', skipped, 'f-skipped'], ['fn-left', left, 'f-left'], ['fn-none', none, 'f-none']];
+      parts.forEach(function (x) {
+        var row = $('#' + x[0]), pct = total ? x[1] / total * 100 : 0;
+        $('.fn-n', row).textContent = x[1].toLocaleString();
+        $('.fn-p', row).textContent = total ? Math.round(pct) + '%' : '';
+        setTimeout(function () { $('#fn-bar .' + x[2]).style.width = pct + '%'; }, 60);
+      });
+    }
+
+    function render(d) {
+      var all = [d.visits.all, d.a.all, d.b.all];
+      var dead = all.every(function (n) { return n === null; });
+      $('#stats-msg').hidden = !dead; $('#stats-body').hidden = dead;
+      if (dead) return;
+      countUp($('#s-visits'), d.visits.all);
+      funnel(d);
+      var a = d.a.all, b = d.b.all, total = (a || 0) + (b || 0);
+      var pa = total ? Math.round((a || 0) / total * 100) : 0, pb = total ? 100 - pa : 0;
+      [['duel-a', a, pa, a > b], ['duel-b', b, pb, b > a]].forEach(function (x) {
+        var row = $('#' + x[0]);
+        row.classList.toggle('lead', !!x[3]);
+        $('.duel-n', row).textContent = x[1] === null ? '\u2013' : x[1].toLocaleString() + (x[1] === 1 ? ' pick' : ' picks');
+        setTimeout(function () { $('.duel-bar i', row).style.width = x[2] + '%'; }, 60);
+      });
+      var verdict;
+      if (a === null && b === null) verdict = '';
+      else if (!total) verdict = 'No votes yet. Be the first.';
+      else if (a === b) verdict = 'Dead heat. Somebody, pick a side.';
+      else if (a > b) verdict = 'Daylight leads by ' + (a - b) + '. Night is plotting a comeback.';
+      else verdict = 'Night leads by ' + (b - a) + '. Daylight is not worried.';
+      $('#s-verdict').textContent = verdict;
+      tile('wk-visits', d.visits); tile('wk-a', d.a); tile('wk-b', d.b);
+    }
+
+    function open() {
+      lastFocus = document.activeElement;
+      box.hidden = false;
+      document.documentElement.classList.add('stats-open');
+      $$('.duel-bar i, .fn-bar i', box).forEach(function (i) { i.style.width = '0'; });
+      requestAnimationFrame(function () { box.classList.add('in'); $('#stats-x').focus({ preventScroll: true }); });
+      load().then(function (d) { if (!box.hidden) render(d); });
+    }
+    function close() {
+      box.classList.remove('in');
+      document.documentElement.classList.remove('stats-open');
+      setTimeout(function () { box.hidden = true; }, reduce ? 0 : 300);
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+    btn.addEventListener('click', open);
+    btn.addEventListener('pointerenter', load);
+    btn.addEventListener('focus', load);
+    $('#stats-x').addEventListener('click', close);
+    box.addEventListener('click', function (e) { if (e.target === box) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'Tab') { e.preventDefault(); $('#stats-x').focus(); }   // the close button is the only stop
+    });
+    setTimeout(load, 3000);   // warm up in the background
+  })();
+
   // Scale the dashboard preview so it renders at desktop width inside the frame
   var view = $('#frame-view'), shot = view && $('iframe', view);
   function fitFrame() {
@@ -134,96 +248,4 @@
     if ('ResizeObserver' in window) new ResizeObserver(fitFrame).observe(view);
     else window.addEventListener('resize', fitFrame);
   }
-
-  // Cursor glow: a soft pastel glow follows the pointer with a short fading trail.
-  // It takes the colour of the skill family under the pointer (chips, highlighted
-  // phrases) and otherwise the tint of the current plate. Mouse only; skipped for
-  // touch / reduced motion.
-  (function () {
-    var cv = $('#trail');
-    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!cv || reduce || !fine) { if (cv) cv.remove(); return; }
-
-    var ctx = cv.getContext('2d');
-    var RADIUS = 120, LIFE = 320, MAX_SAMPLES = 6;
-    var PLATE_TINT = { top: '--sky', experience: '--lilac', toolkit: '--sky', work: '--mint' };
-    var w = 0, h = 0, dpr = 1;
-    var target = null, hoverEl = null, head = { x: 0, y: 0, s: 0 };
-    var rgb = [214, 230, 245], rgbGoal = rgb.slice();
-    var samples = [], running = false, lastMove = 0, lastKeep = null, tick = 0;
-
-    function size() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = window.innerWidth; h = window.innerHeight;
-      cv.width = w * dpr; cv.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    // Any CSS colour string -> [r, g, b], via the canvas's own colour parser
-    function parse(str) {
-      ctx.fillStyle = '#000'; ctx.fillStyle = str;
-      var v = ctx.fillStyle;
-      if (v.charAt(0) === '#') return [parseInt(v.substr(1, 2), 16), parseInt(v.substr(3, 2), 16), parseInt(v.substr(5, 2), 16)];
-      var m = v.match(/[\d.]+/g); return [+m[0], +m[1], +m[2]];
-    }
-
-    function goalFor(el) {
-      var cs = el && getComputedStyle(el), fam = cs && cs.getPropertyValue('--fam').trim();
-      if (fam && fam !== 'transparent') return parse(fam);
-      var plate = el && el.closest && el.closest('section');
-      var tint = (plate && PLATE_TINT[plate.id]) || '--sky';
-      return parse(getComputedStyle(root).getPropertyValue(tint).trim());
-    }
-
-    function blob(x, y, r, a, c) {
-      var g = ctx.createRadialGradient(x, y, 0, x, y, r);
-      g.addColorStop(0, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')');
-      g.addColorStop(1, 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',0)');
-      ctx.fillStyle = g;
-      ctx.fillRect(x - r, y - r, r * 2, r * 2);
-    }
-
-    function frame(now) {
-      // Ease the pointer and the colour
-      head.x += (target.x - head.x) * 0.24;
-      head.y += (target.y - head.y) * 0.24;
-      head.s = now - lastMove < 160 ? head.s + (1 - head.s) * 0.14 : head.s * 0.9;
-      if (++tick % 4 === 0) rgbGoal = goalFor(hoverEl);
-      for (var k = 0; k < 3; k++) rgb[k] += (rgbGoal[k] - rgb[k]) * 0.08;
-      var c = [Math.round(rgb[0]), Math.round(rgb[1]), Math.round(rgb[2])];
-
-      if (!lastKeep || Math.pow(head.x - lastKeep.x, 2) + Math.pow(head.y - lastKeep.y, 2) > 196) {
-        lastKeep = { x: head.x, y: head.y };
-        samples.push({ x: head.x, y: head.y, t: now, c: c });
-        if (samples.length > MAX_SAMPLES) samples.shift();
-      }
-      while (samples.length && now - samples[0].t > LIFE) samples.shift();
-
-      ctx.clearRect(0, 0, w, h);
-      if (!samples.length && head.s < 0.01) { running = false; return; }
-
-      for (var i = 0; i < samples.length; i++) {
-        var sm = samples[i], life = 1 - (now - sm.t) / LIFE;
-        blob(sm.x, sm.y, RADIUS * (0.5 + 0.4 * life), 0.14 * life * life, sm.c);
-      }
-      blob(head.x, head.y, RADIUS, 0.85 * head.s, c);
-      requestAnimationFrame(frame);
-    }
-
-    window.addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      target = { x: e.clientX, y: e.clientY };
-      hoverEl = e.target;
-      lastMove = performance.now();
-      if (!running) {
-        head.x = target.x; head.y = target.y; lastKeep = null;
-        rgb = goalFor(hoverEl); rgbGoal = rgb.slice();
-        running = true; requestAnimationFrame(frame);
-      }
-    }, { passive: true });
-
-    var rt;
-    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(size, 150); });
-    size();
-  })();
 })();
