@@ -114,7 +114,15 @@ html.gate-open .gate { display: grid; }
 .bar { position: fixed; inset: 0 0 auto 0; z-index: 50; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px, calc((100% - 1080px) / 2)); }
 .brand { font-family: var(--serif); font-size: 20px; opacity: 0; visibility: hidden; transition: opacity .3s, visibility 0s .3s; }
 .brand.show { opacity: 1; visibility: visible; transition-delay: 0s; }
-.icon-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 80%, transparent); display: grid; place-items: center; margin-left: auto; }
+.icon-btn { height: 36px; min-width: 36px; padding: 0 9px; border-radius: 18px; border: 1px solid var(--line); background: color-mix(in srgb, var(--paper) 80%, transparent); display: flex; align-items: center; justify-content: center; margin-left: auto; color: var(--ink); font: 500 12.5px/1 var(--sans); transition: background .2s; }
+.icon-btn svg { flex: none; }
+/* Label: hidden until hover or keyboard focus. The button's right edge stays put, so it grows to the left
+   and the icon shifts with it; 0fr to 1fr lets the label open to exactly its own width. */
+.icon-btn .btn-lbl { display: grid; grid-template-columns: 0fr; margin-left: 0; opacity: 0; transition: grid-template-columns .4s cubic-bezier(.22, .8, .24, 1), margin-left .4s cubic-bezier(.22, .8, .24, 1), opacity .25s ease; }
+.icon-btn .btn-lbl > span { min-width: 0; overflow: hidden; white-space: nowrap; }
+@media (hover: hover) {
+  .icon-btn:hover .btn-lbl, .icon-btn:focus-visible .btn-lbl { grid-template-columns: 1fr; margin-left: 8px; opacity: 1; transition: grid-template-columns .4s cubic-bezier(.22, .8, .24, 1), margin-left .4s cubic-bezier(.22, .8, .24, 1), opacity .3s ease .1s; }
+}
 .icon-btn:hover { background: var(--paper-2); }
 .icon-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .i-sun { display: none; }
